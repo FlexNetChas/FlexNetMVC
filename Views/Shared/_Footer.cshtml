@@ -1,0 +1,51 @@
+﻿@{
+    int currentYear = DateTime.Now.Year;
+}
+
+<footer class="footer blurred-container">
+    <div class="container">
+        @* First Row - Grid Layout *@
+        <section class="footer-main">
+            <div class="row">
+                <div class="col-12 col-sm-4 footer-text">
+                    <h4>Discover FlexNet</h4>
+                    <p>
+                        Welcome to FlexNet, your personal chat assistant powered by
+                        intelligent AI for meaningful and personal conversations.&nbsp;
+                        <a href="/">Watch</a>
+                    </p>
+                </div>
+                <div class="col-12 col-sm-4 footer-text">
+                    <h4>Make FlexNet yours</h4>
+                    <p class="text-muted-foreground">
+                        Create your own chat sessions with a customized AI avatar designed
+                        to deliver the best solutions for you.
+                        <a href="/">&nbsp;Explore</a>
+                    </p>
+                </div>
+                <div class="col-12 col-sm-4 footer-text">
+                    <h4>Explore your membership</h4>
+                    <p>
+                        Thank you for being a member of FlexNet. Enjoy unlimited access to
+                        insightful conversations and personalized support.
+                        <a href="/">&nbsp;Browse</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        @* Second row *@
+        <section class="footer-bottom">
+            <p class="footer-copyright">
+                &copy; @currentYear FlexNet
+            </p>
+            <ul class="footer-bottom-links">
+                <li><a href="@Url.Action("Privacy", "Home")" class="footer-bottom-link">Privacy</a></li>
+                <li><a href="#terms" class="footer-bottom-link">Terms</a></li>
+            </ul>
+        </section>
+    </div>
+</footer>
+
+
