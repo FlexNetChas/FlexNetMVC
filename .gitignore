@@ -56,3 +56,6 @@ nunit-*.xml
 # ignore appsettings
 /appsettings.json
 /appsettings.Development.json
+
+.vs/
+*.csproj.user
