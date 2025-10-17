@@ -1,8 +1,64 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    @inject IConfiguration Configuration
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero-section">
+    <div class="hero-content">
+        <!-- Heading -->
+        <h1 class="gradient-text">Welcome to Your Journey</h1>
+
+        <!-- Logo and content -->
+        <div class="hero-content">
+            <img src="~/assets/Logo.svg"
+                 alt="FlexNet Logo"
+                 class="hero-logo" />
+
+            @* Link to Next JS page *@
+            <a href="@Configuration["ExternalUrls:FlexNet-Register"]"
+               class="btn btn-lg w-100"
+                rel="noopener noreferrer">
+                Get Started
+            </a>
+            <p class="have-a-account-text">
+                Already have an account? &nbsp;
+                <a href="@Configuration["ExternalUrls:FlexNet-Login"]"
+                   class="fs-6 fw-lighter"
+                   rel="noopener noreferrer">
+                Sign in here
+                </a>
+            </p>
+        </div>
+
+        <!-- USB boxes -->
+        <div class="hero-badges-wrapper">
+            <p class="fw-semibold fs-6 text-center">
+                Find your path. Shape your future
+            </p>
+            <div class="hero-badge blue">
+                <i class="fa-solid fa-robot badge-icon"></i>
+                <span class="badge-font-size">AI-Powered Conversations</span>
+            </div>
+            <span class="fs-5 text-center">&#8595;</span>
+            <div class="hero-badge green">
+                <i class="fa-solid fa-user-plus badge-icon"></i>
+                <span class="badge-font-size">Free Registration</span>
+            </div>
+            <span class="fs-5 text-center">&#8595;</span>
+            <div class="hero-badge pink">
+                <i class="fa-solid fa-user-astronaut badge-icon"></i>
+                <span class="badge-font-size">Customizable Avatars</span>
+            </div>
+        </div>
+    </div>
+    <!-- Video -->
+    <video src="~/assets/2d-animated.webm"
+           class="hero-video mt-2"
+           aria-label="FlexNet avatar demonstration"
+           autoplay
+           muted
+           loop
+           playsinline
+           preload="auto">
+    </video>
+</section>
