@@ -1,31 +1,178 @@
-html {
-  font-size: 14px;
+
+:root {
+    /* Main theme colors */
+    --background: oklch(0.2773 0.0926 268.03 / 0.4); 
+    --foreground: oklch(0.9672 0 0);
+
+    /* Cards */
+    --card: oklch(0.2034 0.0423 264.61);
+    --card-foreground: oklch(0.9672 0 0);
+
+    /* Primary */
+    --primary: oklch(0.887 0.079 218.45);
+    --primary-foreground: oklch(0.9672 0 0);
+
+    /* Secondary */
+    --secondary: oklch(0.2034 0.0423 264.61);
+    --secondary-foreground: oklch(0.9672 0 0);
+
+    /* Muted */
+    --muted: oklch(0.2034 0.0423 264.61);
+    --muted-foreground: oklch(80.935% 0.018 248.171);
+
+    /* Form */
+    --form: oklch(0.2169 0.0459 264.43);
+    --form-foreground: oklch(80.935% 0.018 248.171);
+
+    /* Accent */
+    --accent: oklch(0.2034 0.0423 264.61);
+    --accent-foreground: oklch(0.9672 0 0);
+
+    /* Error & Warning */
+    --error: oklch(0.577 0.245 27.325);
+    --error-foreground: oklch(0.9672 0 0);
+    --warning: oklch(0.7 0.2 90);
+    --warning-foreground: oklch(0.9672 0 0);
+
+    /* Borders and Input */
+    --border: oklch(0.3 0.05 250);
+    --input: oklch(0.2034 0.0423 264.61);
+    --ring: oklch(0.887 0.079 218.45);
+
+    /* Border Radius */
+    --radius: 10%;
+
+    /* Typography */
+    --font-family-base: "Nunito Sans", system-ui, sans-serif;
+    --font-family-display: "Playfair Display", serif;
 }
 
-@media (min-width: 768px) {
-  html {
+/* Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
     font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: var(--font-family-base);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--foreground);
+    background: linear-gradient( 135deg, oklch(0.12 0.05 250) 0%, oklch(28.344% 0.09472 256.435) 50%, oklch(0.12 0.05 250) 100% );
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* Child component take 100vh - navigationbar */
+main {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+/* Headings  */
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-family-display);
+    color: var(--primary);
+    font-weight: 600;
+}
+/* font-size: clamp(min, preferred, max) */
+h1 {
+    font-size: clamp(2.5rem, 5vw, 3rem);
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+h4 {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+/* Paragraph */
+p,
+span {
+    font-size: clamp(0.9rem, 1vw, 0.1rem);
+    line-height: 1.7;
+    color: var(--muted-foreground);
+}
+
+/* Links */
+a {
+    font-size: clamp(0.8rem, 1vw, 0.9rem);
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+    a:hover {
+        text-decoration: underline;
+        color: var(--primary);
+    }
+
+/*  Utilitys */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--foreground);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+}
+
+    .glass:hover {
+        background: rgba(255, 255, 255, 0.15);
+        text-decoration: none;
+        transform: scale(1.03);
+        transition: all 0.4s ease;
+    }
+
+.blurred-container {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    background-color: oklch(0.12 0.05 250 / 0.6);
+}
+
+/* Override Bootstrap */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    color: var(--foreground);
+    background-color: var(--background);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.6rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+}
+    .btn:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.4);
+        transform: scale(1.02); 
+        text-decoration: none;
+    }
+
+/* Media breakpoints */
+@media (max-width: 1024px) {
+    .btn {
+        max-width: 40%;
+    }
 }
